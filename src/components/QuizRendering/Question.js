@@ -4,7 +4,7 @@ const Question = (props) => {
     return (
          <div >
               <div className="questionCount">
-            Question <span> {props.currentQuestion} </span> of <span> {props.questionTotal} </span>
+            Question <span> {props.currentQuestion} </span> of <span> {props.questionTotal -1} </span>
             </div>
 
         <h1 className='question'>{props.dataSet.question}</h1>

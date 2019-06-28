@@ -1,11 +1,8 @@
-import React from 'react';
-import {
-  BrowserRouter,
-  Route
-} from 'react-router-dom';
-
-import './App.css';
-// App components
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import 'antd/dist/antd.css';
+import * as actions from './store/actions/auth';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import About from './components/About'
@@ -15,24 +12,43 @@ import Home from './components/Home';
 import Login from './components/Login';
 import QuizRendering from './components/QuizRendering';
 
+class  App extends Component {
 
-const  App= () => {
+  componentDidMount() {
+    this.props.onTryAutoSignup();  
+  }  
+
+  render () {
   return (
    <BrowserRouter>
     <div className="App">
-      <Navigation />
+      <Navigation {...this.props}/>
 
+      <Route exact path="/" component= {Home}/>
       <Route exact path="/home" component= {Home}/>
       <Route path="/about" component= {About}/>
       <Route path="/contact" component= {Contact}/>
       <Route path="/register" component= {Register}/>
       <Route path="/login" component= {Login}/>
-      <Route path="/quizzz" component= {QuizRendering} /> 
+      <Route path="/quiz" component= {QuizRendering} /> 
 
-      <Footer />
+      <Footer {...this.props}/>
     </div>
     </BrowserRouter>  
   );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

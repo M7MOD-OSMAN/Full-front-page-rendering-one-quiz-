@@ -47,7 +47,7 @@ const Content = () => {
                 </div>
                 <div className="col-md-4">
                     <Link className="btn btn-lg btn-primary btn-block" to="/register"><span>Register Now</span> </Link>
-                    <Link className="btn btn-lg btn-primary btn-block" to="/quizzz"><span>Take the quiz</span> </Link>
+                    <Link className="btn btn-lg btn-primary btn-block" to="/quiz"><span>Take the quiz</span> </Link>
 
                 </div>
                 <a href="#top" className="btn btn-lg btn-primary btn-block"><span><i></i>Back to top</span></a>

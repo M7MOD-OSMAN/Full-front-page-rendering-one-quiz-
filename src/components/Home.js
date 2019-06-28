@@ -9,10 +9,10 @@ class Home extends Component {
     return (
       <div className="main-content home">
        <div>
-        <Header />
+        <Header {...this.props}/>
         </div>
         <div>
-        <Content /> 
+        <Content {...this.props}/> 
         </div>
       </div>
     );
